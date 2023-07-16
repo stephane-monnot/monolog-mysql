@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Monolog\Logger;
 use Monolog\Handler\AbstractProcessingHandler;
+use Monolog\LogRecord;
 
 class MysqlHandler extends AbstractProcessingHandler
 {
@@ -20,7 +21,7 @@ class MysqlHandler extends AbstractProcessingHandler
         parent::__construct($level, $bubble);
     }
 
-    protected function write(array $record) : void
+    protected function write(LogRecord $record) : void
     {
         $data = [
             'instance'    => gethostname(),
